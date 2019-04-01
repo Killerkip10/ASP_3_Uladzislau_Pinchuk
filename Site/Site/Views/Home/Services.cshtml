@@ -1,0 +1,67 @@
+﻿<h2>Services</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Desription</th>
+            <th scope="col">Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < @Model.Count; i++)
+        {
+            <tr>
+                <th scope="row">@(i + 1)</th>
+                <td>@Model[i].Name</td>
+                <td>@Model[i].Description</td>
+                <td>@Model[i].Price</td>
+            </tr>
+        }   
+    </tbody>
+</table>
+<h2></h2>
+@using (Html.BeginForm("CreateService", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="service-name">Name</label>
+        <input
+               value="@ViewBag.ServiceInCookie.Name"
+               type="text"
+               name="name"
+               placeholder="Enter name"
+               class="form-control"
+               id="service-name"
+               required
+         />
+    </div>
+    <div class="form-group">
+        <label for="service-description">Description</label>
+        <input
+               value="@ViewBag.ServiceInCookie.Description"
+               type="text"
+               name="description"
+               placeholder="Enter description"
+               class="form-control"
+               id="service-description"
+               required
+         />
+    </div>
+    <div class="form-group">
+        <label for="service-price">Price</label>
+        <input
+               value="@ViewBag.ServiceInCookie.Price"
+               type="number"
+               name="price"
+               placeholder="Enter price"
+               class="form-control"
+               id="service-price"
+               required
+         />
+        
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+<img src="~/images/cat1.jpg" alt="Cat" class="img-thumbnail" />

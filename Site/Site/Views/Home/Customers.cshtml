@@ -1,0 +1,153 @@
+﻿<h2>Customers</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Fullname</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Job</th>
+            <th scope="col">Birthday</th>
+            <th scope="col">Width</th>
+            <th scope="col">Weight</th>
+            <th scope="col">CountChildren</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (int i = 0; i < @Model.Count; i++)
+        {
+            <tr>
+                <th scope="row">@(i + 1)</th>
+                <td>@Model[i].FullName</td>
+                <td>@Model[i].Gender</td>
+                <td>@Model[i].Job</td>
+                <td>@Model[i].Birthday</td>
+                <td>@Model[i].Width</td>
+                <td>@Model[i].Weight</td>
+                <td>@Model[i].CountChildren</td>
+            </tr>
+        }
+    </tbody>
+</table>
+@using (Html.BeginForm("CreateCustomer", "Home", FormMethod.Post))
+{
+    <div class="form-group">
+        <label for="customer-fullname">Fullname</label>
+        <input 
+               value="@ViewBag.Customer.FullName"
+               type="text"
+               name="fullname"
+               placeholder="Enter fullname"
+               class="form-control"
+               id="customer-fullname"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-gender">Gender</label>
+        <input 
+               value="@ViewBag.Customer.Gender"
+               type="text"
+               name="gender"
+               placeholder="Enter gender"
+               class="form-control"
+               id="customer-gender"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-job">Job</label>
+        <input 
+               value="@ViewBag.Customer.Job"
+               type="text"
+               name="job"
+               placeholder="Enter job"
+               class="form-control"
+               id="customer-job"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-job">Birthday</label>
+        <input 
+               value="@ViewBag.Customer.Birthday"
+               type="date"
+               name="birthday"
+               placeholder="Enter birthday"
+               class="form-control"
+               id="customer-birthday"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-width">Width</label>
+        <input 
+               value="@ViewBag.Customer.Width"
+               type="number"
+               name="width"
+               placeholder="Enter width"
+               class="form-control"
+               id="customer-width"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-weight">Weight</label>
+        <input 
+               value="@ViewBag.Customer.Weight"
+               type="number"
+               name="weight"
+               placeholder="Enter weight"
+               class="form-control"
+               id="customer-weight"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-count-child">Count child</label>
+        <input 
+               value="@ViewBag.Customer.CountChildren"
+               type="number"
+               name="countChild"
+               placeholder="Enter count child"
+               class="form-control"
+               id="customer-count-child"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-adress">Adress</label>
+        <input 
+               value="@ViewBag.Customer.Adress"
+               type="text"
+               name="adress"
+               placeholder="Enter adress"
+               class="form-control"
+               id="customer-adress"
+               required />
+    </div>
+    <div class="form-group">
+        <label for="customer-passport">Passport</label>
+        <input 
+               value="@ViewBag.Customer.Passport"
+               type="text"
+               name="passport"
+               placeholder="Enter passport"
+               class="form-control"
+               id="customer-passport"
+               required
+        />
+    </div>
+    <div class="form-group">
+        <select name="nationalityId" class="form-control" required>
+            @foreach (var nationality in ViewBag.Nationalities)
+            {
+                <option value="@nationality.Id">@nationality.Name</option>
+            }
+        </select>
+    </div>
+    <div class="form-group">
+        <select name="zodiacSignId" class="form-control" required>
+            @foreach (var zodiacSign in ViewBag.ZodiacSigns)
+            {
+                <option value="@zodiacSign.Id">@zodiacSign.Name</option>
+            }
+        </select>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+}
+<img src="~/images/cat1.jpg" alt="Cat" class="img-thumbnail" />
